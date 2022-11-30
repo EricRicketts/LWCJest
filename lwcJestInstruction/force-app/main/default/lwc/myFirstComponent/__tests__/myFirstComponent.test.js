@@ -22,4 +22,32 @@ describe("c-my-first-component", () => {
     // const div = element.shadowRoot.querySelector('div');
     expect(1).toBe(1);
   });
+
+  test("should display the first message", () => {
+    // Arrange
+    const element = createElement("c-my-first-component", {
+      is: MyFirstComponent
+    });
+
+    // Act
+    document.body.appendChild(element);
+    const firstDiv = element.shadowRoot.querySelector("div.first");
+
+    // Assert
+    expect(firstDiv.textContent).toBe("Hello, World!");
+  });
+
+  test("should display the second message", () => {
+    // Arrange
+    const element = createElement("c-my-first-component", {
+      is: MyFirstComponent
+    });
+
+    // Act
+    document.body.appendChild(element);
+    const secondDiv = element.shadowRoot.querySelector("div.second");
+
+    // Assert
+    expect(secondDiv.textContent).toBe("My greeting is: World.");
+  });
 });
