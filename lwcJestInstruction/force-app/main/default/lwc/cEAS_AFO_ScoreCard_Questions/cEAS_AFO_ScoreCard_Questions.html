@@ -1,0 +1,145 @@
+<template>
+    <template if:true={showQuestionVal}>
+        <header class="header">Inspection Form </header>
+        <hr>
+        <lightning-accordion class="example-accordion" allow-multiple-sections-open
+            onsectiontoggle={handleToggleSection} active-section-name="A">
+            <lightning-accordion-section class="firstsectionName" name="A" label={section1Val}>
+                <template for:each={section1Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.inspquestion.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.inspquestion.Question_Type__c} data-id={index}>
+                                <p>* {currentItem.inspquestion.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.inspquestion.Id} data-item={currentItem.inspquestion.Id} data-index={index} options={options}
+                                    onchange={handleChange} value={currentItem.inspquestion.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="B" label={section2Val}>
+                <template for:each={section2Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-secid={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group id={currentItem.Id} key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection2Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="C" label={section3Val}>
+                <template for:each={section3Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec3id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection3Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="D" label={section4Val}>
+                <template for:each={section4Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec4id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection4Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="E" label={section5Val}>
+                <template for:each={section5Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.inspquestion.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div if:true={currentItem.checkbox} class={currentItem.inspquestion.Question_Type__c} data-sec5id={index}>
+                                <p>* {currentItem.inspquestion.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.inspquestion.Id} data-item={currentItem.inspquestion.Id} data-index={index} options={options}
+                                    onchange={handleSection5Change} value={currentItem.inspquestion.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                            <div if:true={currentItem.Number} class={currentItem.inspquestion.Question_Type__c} data-sec5id={index}>
+                                    <p>* {currentItem.inspquestion.Question_Text__c}</p>
+                                    <lightning-input key={currentItem.inspquestion.Id} data-item={currentItem.inspquestion.Id} data-index={index} type="text" onchange={handleSection5Change} value={currentItem.inspquestion.Answer__c} ></lightning-input>
+                                </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="F" label={section6Val}>
+                <template for:each={section6Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec6id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection6Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="G" label={section7Val}>
+                <template for:each={section7Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec7id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection7Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="H" label={section8Val}>
+                <template for:each={section8Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec8id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection8Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="I" label={section9Val}>
+                <template for:each={section9Questions} for:item="currentItem" for:index="index">
+                    <div key={currentItem.Id} class="slds-grid slds-wrap questions">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class={currentItem.Question_Type__c} data-sec9id={index}>
+                                <p>* {currentItem.Question_Text__c}</p>
+                                <lightning-radio-group key={currentItem.Id} data-item={currentItem.Id} data-index={index} options={options}
+                                    onchange={handleSection9Change} value={currentItem.Answer__c} type="radio">
+                                </lightning-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <div class="checkboxclass">
+            <lightning-input type="checkbox" onchange={oncheckboxselect} label="I certify that the statements here in are true, complete, and accurate to the best of my knowledge" name="input1"></lightning-input>
+        </div>
+    </template> 
+    <div class="savebutton">
+        <lightning-button disabled={buttondisabled} label="Submit" onclick={handlesavebutton}></lightning-button>
+    </div>
+</template>
