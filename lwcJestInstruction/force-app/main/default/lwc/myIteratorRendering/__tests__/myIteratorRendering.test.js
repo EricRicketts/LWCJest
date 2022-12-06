@@ -2,7 +2,7 @@ import { createElement } from "lwc";
 import MyIteratorRendering from "c/myIteratorRendering";
 
 describe("c-my-iterator-rendering", () => {
-  let element, expected, results;
+  let element, expected, results, firstList, secondList;
   beforeEach(() => {
     // Arrange
     element = createElement("c-my-iterator-rendering", {
@@ -20,12 +20,20 @@ describe("c-my-iterator-rendering", () => {
     }
   });
 
+  it("should render the approprite number of children using a for:each", () => {
+    // Act
+    firstList = element.shadowRoot.querySelector("ul.forEachList");
+
+    // Assert
+    expect(firstList.children.length).toBe(3);
+  });
+
   it("should render using a for:each", () => {
     // Arrange
     expected = ["Nikhil", "Yosemite", "Foghorn"];
 
     // Act
-    const firstList = element.shadowRoot.querySelector("ul.forEachList");
+    firstList = element.shadowRoot.querySelector("ul.forEachList");
     const firstListChildren = Array.from(firstList.children);
     results = [
       firstListChildren[0].textContent,
@@ -37,7 +45,24 @@ describe("c-my-iterator-rendering", () => {
     expect(results).toEqual(expected);
   });
 
-  it("should render using a iterator template", () => {
+  it("should render the approprite number of children using an iterator:name", () => {
+    // Arrange
+    expected = [3, 2, 1, 2];
+
+    // Act
+    secondList = element.shadowRoot.querySelector("ul.iteratorList");
+    results = [
+      secondList.children.length,
+      secondList.children.item(0).children.length,
+      secondList.children.item(1).children.length,
+      secondList.children.item(2).children.length
+    ];
+
+    // Assert
+    expect(results).toEqual(expected);
+  });
+
+  it("should render using an iterator:name", () => {
     // Arrange
     expected = [
       "Start Of List",
@@ -48,7 +73,7 @@ describe("c-my-iterator-rendering", () => {
     ];
 
     // Act
-    const secondList = element.shadowRoot.querySelector("ul.iteratorList");
+    secondList = element.shadowRoot.querySelector("ul.iteratorList");
     results = [
       secondList.children.item(0).children.item(0).textContent,
       secondList.children.item(0).children.item(1).textContent,
