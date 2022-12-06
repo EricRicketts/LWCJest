@@ -20,7 +20,7 @@ describe("c-my-iterator-rendering", () => {
     }
   });
 
-  it("should render using a template for:each", () => {
+  it("should render using a for:each", () => {
     // Arrange
     expected = ["Nikhil", "Yosemite", "Foghorn"];
 
@@ -34,6 +34,29 @@ describe("c-my-iterator-rendering", () => {
     ];
 
     // Assert
+    expect(results).toEqual(expected);
+  });
+
+  it("should render using a iterator template", () => {
+    // Arrange
+    expected = [
+      "Start Of List",
+      "Nikhil",
+      "Yosemite",
+      "Foghorn",
+      "End Of List"
+    ];
+
+    // Act
+    const secondList = element.shadowRoot.querySelector("ul.iteratorList");
+    results = [
+      secondList.children.item(0).children.item(0).textContent,
+      secondList.children.item(0).children.item(1).textContent,
+      secondList.children.item(1).children.item(0).textContent,
+      secondList.children.item(2).children.item(0).textContent,
+      secondList.children.item(2).children.item(1).textContent
+    ];
+
     expect(results).toEqual(expected);
   });
 });
