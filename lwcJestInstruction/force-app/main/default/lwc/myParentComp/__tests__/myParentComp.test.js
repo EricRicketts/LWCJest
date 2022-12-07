@@ -4,7 +4,6 @@ import MyParentComp from "c/myParentComp";
 
 describe("c-my-parent-comp", () => {
   const USER_DATA = { Id: "1", Name: "Nikhil" };
-  let expected, results;
   beforeEach(() => {
     // Arrange
     const element = createElement("c-my-parent-comp", {
