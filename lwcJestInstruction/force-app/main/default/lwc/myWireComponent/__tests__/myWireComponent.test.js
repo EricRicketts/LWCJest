@@ -53,6 +53,18 @@ describe("c-my-wire-component", () => {
       const pElements = testElement.shadowRoot.querySelectorAll("p");
       expected = mockGetContactListNoRecord.length;
       result = pElements.length;
+      expect(result).toBe(expected);
+    });
+  });
+
+  it("should render an error message when the wired component returns an errro", () => {
+    const testElement = document.querySelector("c-my-wire-component");
+    getContactList.error();
+    return Promise.resolve().then(() => {
+      const pElements = testElement.shadowRoot.querySelectorAll("p");
+      const divElements = testElement.shadowRoot.querySelectorAll("div.error");
+      expected = [0, 1];
+      result = [pElements.length, divElements.length];
       expect(result).toEqual(expected);
     });
   });
