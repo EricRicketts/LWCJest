@@ -4,9 +4,8 @@ import getAccountList from "@salesforce/apex/AccountController.getAccountList";
 export default class MyApexMethodComp extends LightningElement {
   accounts;
   error;
-
   loadAccounts() {
-    getAccountList
+    getAccountList()
       .then((result) => {
         this.accounts = result;
         this.error = null;
