@@ -1,4 +1,9 @@
 /* eslint-disable @lwc/lwc/no-document-query */
+/**
+ * @jest-environment jsdom
+ */
+
+import { setImmediate } from "timers";
 import { createElement } from "lwc";
 import MyApexMethodComp from "c/myApexMethodComp";
 import getAccountList from "@salesforce/apex/AccountController.getAccountList";
