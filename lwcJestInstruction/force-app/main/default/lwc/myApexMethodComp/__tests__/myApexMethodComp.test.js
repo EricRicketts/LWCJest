@@ -38,8 +38,35 @@ describe("c-my-apex-method-comp", () => {
 
     // Act
     const element = document.querySelector("c-my-apex-method-comp");
+    const button = element.shadowRoot.querySelector("lightning-button");
+    button.click();
+
+    return new Promise(setImmediate).then(() => {
+      const detailElements =
+        element.shadowRoot.querySelectorAll("p.accountName");
+      expect(detailElements.length).toBe(APEX_ACCOUNTLIST_SUCCESS.length);
+      expect(detailElements[0].textContent).toBe(
+        APEX_ACCOUNTLIST_SUCCESS[0].Name
+      );
+      expect(detailElements[1].textContent).toBe(
+        APEX_ACCOUNTLIST_SUCCESS[1].Name
+      );
+    });
+  });
+
+  test("It should render an error when apex returns an erro", () => {
+    // Arrange
+    getAccountList.mockRejectedValue(APEX_ACCOUNTLIST_ERROR);
+
+    // Act
+    const element = document.querySelector("c-my-apex-method-comp");
+    const button = element.shadowRoot.querySelector("lightning-button");
+    button.click();
+
     // Assert
-    // const div = element.shadowRoot.querySelector('div');
-    expect(1).toBe(1);
+    return new Promise(setImmediate).then(() => {
+      const errorElement = element.shadowRoot.querySelectorAll("p.error");
+      expect(errorElement).not.toBeNull();
+    });
   });
 });

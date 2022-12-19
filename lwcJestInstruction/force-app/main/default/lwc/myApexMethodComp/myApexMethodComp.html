@@ -8,11 +8,11 @@
     </div>
     <template if:true={accounts}>
       <template for:each={accounts} for:item="account">
-        <p key={account.Id}>{account.Name}</p>
+        <p key={account.Id} class="accountName">{account.Name}</p>
       </template>
     </template>
     <template if:true={error}>
-      <p>{error}</p>
+      <p class="error">{error}</p>
     </template>
   </lightning-card>
 </template>
