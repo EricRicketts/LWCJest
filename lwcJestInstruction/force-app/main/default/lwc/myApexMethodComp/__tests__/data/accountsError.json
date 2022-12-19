@@ -1,0 +1,8 @@
+{
+  "body": {
+    "message": "An error has occurred with your component."
+  },
+  "ok": false,
+  "status": 400,
+  "statusText": "Not Found"
+}

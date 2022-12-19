@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "1",
+    "Name": "Elmer Fudd",
+    "AnnualRevenue": 100000
+  },
+  {
+    "Id": "2",
+    "Name": "Daffy Duck",
+    "AnnualRevenue": 200000
+  },
+  {
+    "Id": "3",
+    "Name": "Foghorn Leghorn",
+    "AnnualRevenue": 300000
+  },
+  {
+    "Id": "4",
+    "Name": "Tweety Bird",
+    "AnnualRevenue": 400000
+  },
+  {
+    "Id": "5",
+    "Name": "Yosemite Sam",
+    "AnnualRevenue": 500000
+  },
+  {
+    "Id": "6",
+    "Name": "Bugs Bunny",
+    "AnnualRevenue": 600000
+  }
+]
